@@ -1,10 +1,11 @@
 import React from 'react';
 import FeedProduct from '../Produtos/FeedProducts';
 
-const Feminino = () => {
+const Feminino = (props) => {
+  console.log(props);
   return (
     <>
-      <FeedProduct feminino={Feminino} />
+      <FeedProduct props={props} />
     </>
   );
 };

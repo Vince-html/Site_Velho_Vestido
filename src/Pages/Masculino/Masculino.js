@@ -2,10 +2,11 @@
 import React from 'react';
 import FeedProduct from '../Produtos/FeedProducts';
 
-const Masculino = ({ categoria }) => {
+const Masculino = (props) => {
+  console.log(props.location.pathname);
   return (
     <div>
-      <FeedProduct categoria={categoria} />
+      <FeedProduct props={props} />
     </div>
   );
 };

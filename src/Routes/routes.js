@@ -23,7 +23,7 @@ const Routes = () => {
             <Route path='/' exact>
               <Home />
             </Route>
-            <Route path='/masculino' exact component={Masculino} />
+            <Route path='/:masculino' exact component={Masculino} />
             <Route
               path='/feminino'
               exact

@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import FeedModal from '../Produtos/ProdutoIndividual/FeedModal';
 import FeedProducts from './FeedProducts';
 
-const Feed = () => {
+const Feed = (props) => {
   const [modalProduct, setModalProduct] = useState(null);
   const [pages, setPages] = useState([1]);
   const [infinite, setInfinite] = useState(true);
+  console.log(props);
 
   useEffect(() => {
     let wait = false;
