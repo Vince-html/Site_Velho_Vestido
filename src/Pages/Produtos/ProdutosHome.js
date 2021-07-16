@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import FeedModal from '../Produtos/ProdutoIndividual/FeedModal';
 import FeedProducts from './FeedProducts';
 
-const Feed = (props) => {
+const Feed = () => {
   const [modalProduct, setModalProduct] = useState(null);
   const [pages, setPages] = useState([1]);
   const [infinite, setInfinite] = useState(true);
-  console.log(props);
+  console.log(modalProduct);
 
   useEffect(() => {
     let wait = false;
@@ -15,12 +15,12 @@ const Feed = (props) => {
       if (infinite) {
         const scroll = window.scrollY;
         const height = document.body.offsetHeight - window.innerHeight;
-        if (scroll > height * 0.75 && !wait) {
+        if (scroll > height * 0.65 && !wait) {
           setPages((pages) => [...pages, pages.length + 1]);
           wait = true;
           setTimeout(() => {
             wait = false;
-          }, 500);
+          }, 1000);
         }
       }
     }
@@ -32,7 +32,7 @@ const Feed = (props) => {
       window.removeEventListener('scroll', infiniteScroll);
     };
   }, [infinite]);
-
+  console.log(pages);
   return (
     <>
       {modalProduct && (

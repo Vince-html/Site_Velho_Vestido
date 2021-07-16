@@ -1,12 +1,14 @@
-/* eslint-disable no-unreachable */
 import GlobalStyle from './globalStyles';
 import Routes from './Routes/routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Routes />
+      <Router>
+        <GlobalStyle />
+        <Routes />
+      </Router>
     </>
   );
 }

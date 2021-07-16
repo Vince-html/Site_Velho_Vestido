@@ -6,27 +6,31 @@ import useFetch from '../../Hooks/useFetch';
 import { PRODUCTS_GET } from '../../api';
 import Error from '../../Components/Helper/Error';
 import { Ul } from './styles';
+import { useLocation } from 'react-router-dom';
 
-const FeedProduct = ({ page, setModalProduct, setInfinite, props }) => {
+const FeedProducts = ({ page, setModalProduct, setInfinite }, props) => {
   const { data, error, request } = useFetch();
   const [categoria, setCategoria] = useState('');
+  const location = useLocation();
+  const category = location.pathname;
+  console.log(setModalProduct);
 
-  // const category = props.location.pathname;
+  useEffect(() => {
+    if (category === '/') {
+      setCategoria('');
+    }
+    if (category === '/masculino') {
+      setCategoria('masculino');
+    }
+    if (category === '/feminino') {
+      setCategoria('feminino');
+    }
+    if (category === '/sapatos') {
+      setCategoria('sapato');
+    }
+  }, [category, setCategoria]);
 
-  // useEffect(() => {
-  //   if (category === '/masculino') {
-  //     setCategoria('masculino');
-  //   }
-  //   if (category === '/feminino') {
-  //     setCategoria('feminino');
-  //   }
-
-  //   if (category === undefined) {
-  //     setCategoria('');
-  //   }
-  // }, [category, setCategoria]);
-
-  // console.log(categoria);
+  console.log(categoria);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -43,16 +47,6 @@ const FeedProduct = ({ page, setModalProduct, setInfinite, props }) => {
     }
     fetchProduct();
   }, [request, page, categoria, setInfinite]);
-  // if (data) {
-  //   const cate = data.map((product) => {
-  //     return product;
-  //   });
-
-  //   const masc = cate.filter((obj) => {
-  //     return obj.categoria === 'Masculino';
-  //   });
-  //   console.log(masc);
-  // }
 
   if (error) return <Error error={error} />;
   if (data) {
@@ -64,7 +58,7 @@ const FeedProduct = ({ page, setModalProduct, setInfinite, props }) => {
               <FeedProductItem
                 key={product.id}
                 product={product}
-                setModalPhoto={setModalProduct}
+                setModalProduct={setModalProduct}
               />
             );
           })}
@@ -74,4 +68,4 @@ const FeedProduct = ({ page, setModalProduct, setInfinite, props }) => {
   } else return null;
 };
 
-export default FeedProduct;
+export default FeedProducts;

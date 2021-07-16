@@ -4,13 +4,14 @@ import React from 'react';
 import { Li, Img } from '../../../Components/Li/Styles';
 
 const FeedProductItem = ({ product, setModalProduct }) => {
-  function handleClick() {
+  console.log(setModalProduct);
+  function handleClick(e) {
+    e.preventDefault();
     setModalProduct(product);
   }
   return (
     <Li className='product-li'>
       <Img src={product.src} alt={product.titulo} onClick={handleClick} />
-      {/* <span className='product-span'>{product.title}</span> */}
     </Li>
   );
 };

@@ -23,7 +23,7 @@ const Admin = () => {
     <div style={{ display: 'flex' }}>
       <Form onSubmit={handleSubmit}>
         <Input
-          label='Usuario'
+          label='Usuário'
           type='text'
           name='username'
           {...username}

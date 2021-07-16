@@ -1,14 +1,10 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import FeedProduct from '../Produtos/FeedProducts';
 
-const Masculino = (props) => {
-  console.log(props.location.pathname);
-  return (
-    <div>
-      <FeedProduct props={props} />
-    </div>
-  );
+import FeedProducts from '../Produtos/FeedProducts';
+
+const Masculino = (...props) => {
+  return <FeedProducts home={homeh} />;
 };
 
 export default Masculino;
