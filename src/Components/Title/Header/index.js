@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useOnClickOutside } from '../../../Hooks/Hooks';
+import React, { useRef, useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import Logo from '../logo';
 import { Section, StyledMenu, StyledBurger } from './style';
@@ -16,6 +16,21 @@ const Menu = ({ open }) => {
   );
 };
 
+const useOnClickOutside = (ref, handler) => {
+  useEffect(() => {
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+    document.addEventListener('mousedown', listener);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+    };
+  }, [ref, handler]);
+};
+
 const Burger = ({ open, setOpen }) => {
   return (
     <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -27,9 +42,11 @@ const Burger = ({ open, setOpen }) => {
 };
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  const [open, setOpen] = React.useState(false);
+
   return (
     <Section>
       <div ref={node}>

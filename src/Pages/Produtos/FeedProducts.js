@@ -8,12 +8,11 @@ import Error from '../../Components/Helper/Error';
 import { Ul } from './styles';
 import { useLocation } from 'react-router-dom';
 
-const FeedProducts = ({ page, setModalProduct, setInfinite }, props) => {
+const FeedProducts = ({ page, setInfinite }, props) => {
   const { data, error, request } = useFetch();
   const [categoria, setCategoria] = useState('');
   const location = useLocation();
   const category = location.pathname;
-  console.log(setModalProduct);
 
   useEffect(() => {
     if (category === '/') {
@@ -29,8 +28,6 @@ const FeedProducts = ({ page, setModalProduct, setInfinite }, props) => {
       setCategoria('sapato');
     }
   }, [category, setCategoria]);
-
-  console.log(categoria);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -54,13 +51,7 @@ const FeedProducts = ({ page, setModalProduct, setInfinite }, props) => {
       <>
         <Ul className='feed-product animeLeft'>
           {data.map((product) => {
-            return (
-              <FeedProductItem
-                key={product.id}
-                product={product}
-                setModalProduct={setModalProduct}
-              />
-            );
+            return <FeedProductItem key={product.id} product={product} />;
           })}
         </Ul>
       </>

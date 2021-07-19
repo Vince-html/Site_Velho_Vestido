@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
-import ProductContent from './ProductContent';
-
+import ProductContent from './Modal/ProductContent';
 import useFetch from '../../../Hooks/useFetch';
 import { PRODUCT_GET } from '../../../api';
 import Error from '../../../Components/Helper/Error';
+import { Modal } from './Modal/styles';
 
 const FeedModal = ({ product, setModalProduct }) => {
   const { data, error, request } = useFetch();
@@ -22,11 +20,11 @@ const FeedModal = ({ product, setModalProduct }) => {
   }
 
   return (
-    <div onClick={handleOutside}>
+    <Modal onClick={handleOutside}>
       {error && <Error error={error} />}
-      {data && console.log(data)}
-      {data && <ProductContent single={false} data={data} />} */
-    </div>
+
+      {data && <ProductContent data={data} />}
+    </Modal>
   );
 };
 
