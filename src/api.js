@@ -1,4 +1,4 @@
-export const API_URL = 'http://velhovestido.local/json';
+export const API_URL = 'https://velhovestido.000webhostapp.com/json';
 const tokenAuth = '/jwt-auth/v1/token';
 const apiUser = '/api/user';
 const tokenValidate = '/jwt-auth/v1/token/validate';
