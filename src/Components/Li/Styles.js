@@ -15,6 +15,7 @@ export const Ul = styled.ul`
     'e e d d f f';
 
   @media (max-width: 765px) {
+    grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       'a b'
@@ -30,6 +31,7 @@ export const Li = styled.li`
   display: flex;
   width: 100%;
   height: 100%;
+
   div {
     overflow: hidden;
   }
@@ -61,9 +63,4 @@ export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
 `;

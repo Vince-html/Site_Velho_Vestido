@@ -14,6 +14,7 @@ import ProtectedRoute from '../Components/Helper/ProtectedRoute';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import ProdutosHome from '../Pages/Produtos/ProdutosHome';
 import ProductContent from '../Pages/Produtos/ProdutoIndividual/Modal/ProductContent';
+import { Footer } from '../Components/Footer';
 
 const Routes = ({ masculino }) => {
   return (
@@ -41,6 +42,7 @@ const Routes = ({ masculino }) => {
             <Route path='*' component={NotFound} />
           </Switch>
         </UserStorage>
+        <Footer />
       </Router>
     </>
   );

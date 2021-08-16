@@ -7,9 +7,10 @@ import { PRODUCTS_GET } from '../../api';
 import Error from '../../Components/Helper/Error';
 import { Ul } from './styles';
 import { useLocation } from 'react-router-dom';
+import Loading from '../../Components/Helper/Loading';
 
 const FeedProducts = ({ page, setInfinite }, props) => {
-  const { data, error, request } = useFetch();
+  const { data, error, request, loading } = useFetch();
   const [categoria, setCategoria] = useState('');
   const location = useLocation();
   const category = location.pathname;
@@ -27,7 +28,13 @@ const FeedProducts = ({ page, setInfinite }, props) => {
     if (category === '/sapatos') {
       setCategoria('sapato');
     }
-  }, [category, setCategoria]);
+    if (category === '/tenis') {
+      setCategoria('tenis');
+    }
+    if (category === '/outlet') {
+      setCategoria('outlet');
+    }
+  }, [category, location]);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -41,11 +48,13 @@ const FeedProducts = ({ page, setInfinite }, props) => {
       const { response, json } = await request(url, options);
 
       if (response && response.ok && json.length < total) setInfinite(false);
+      console.log(response);
     }
     fetchProduct();
   }, [request, page, categoria, setInfinite]);
 
   if (error) return <Error error={error} />;
+  if (loading) return <Loading />;
   if (data) {
     return (
       <>

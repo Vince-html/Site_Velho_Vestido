@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 export const Main = styled.div`
   margin-top: 5rem;
+  max-width: 70%;
 `;
 
 export const TopSection = styled.div`
-
     margin-top: 0.5rem;
-
     display: grid;
     z-index: 100;
-
     justify-content: space-between;
-
-
- 
-
-
    button{
       grid-area: 1/4;
     }
@@ -41,6 +34,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 30rem;
   margin-top: 2rem;
+  max-width: initial;
 
   @media (max-width: 50rem) {
     display: block;
@@ -70,7 +64,7 @@ export const Button = styled.button`
 `;
 
 export const Img = styled.img`
-  max-width: auto;
+  max-width: 100%;
   max-height: 100%;
   object-fit: cover;
 `;

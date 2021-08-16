@@ -2,7 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import Logo from '../logo';
-import { Section, StyledMenu, StyledBurger } from './style';
+import {
+  Section,
+  StyledMenu,
+  StyledBurger2,
+  DivRef,
+  StyledBurger,
+} from './style';
 
 const Menu = ({ open }) => {
   return (
@@ -40,6 +46,15 @@ const Burger = ({ open, setOpen }) => {
     </StyledBurger>
   );
 };
+const Burger2 = ({ open, setOpen }) => {
+  return (
+    <StyledBurger2 open={open} onClick={() => setOpen(!open)}>
+      <div />
+      <div />
+      <div />
+    </StyledBurger2>
+  );
+};
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -48,13 +63,17 @@ const Header = () => {
   useOnClickOutside(node, () => setOpen(false));
 
   return (
-    <Section>
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-        <Logo to='/'>Velho Vestido</Logo>
-      </div>
-    </Section>
+    <>
+      <Burger2 open={open} setOpen={setOpen} />
+      <Menu open={open} setOpen={setOpen} />
+      <Section>
+        <DivRef ref={node}>
+          <Burger open={open} setOpen={setOpen} />
+
+          <Logo to='/'>Velho Vestido</Logo>
+        </DivRef>
+      </Section>
+    </>
   );
 };
 

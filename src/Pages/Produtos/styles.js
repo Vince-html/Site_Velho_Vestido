@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Ul = styled.ul`
   display: grid;
-  margin-top: 2rem;
+  margin-top: 1rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 1fr);
   align-items: center;
-  max-height: 40rem;
+  max-height: 60rem;
   gap: 1rem;
 
   grid-template-areas:
@@ -18,6 +18,8 @@ export const Ul = styled.ul`
 
   @media (max-width: 765px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-height: 100%;
     grid-template-areas:
       'a b'
       'c d'
@@ -30,6 +32,8 @@ export const Li = styled.li`
   list-style: none;
   cursor: pointer;
   display: flex;
+  min-width: 670px;
+  min-height: 380px;
   width: 100%;
   height: 100%;
   div {
@@ -63,9 +67,4 @@ export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
 `;
