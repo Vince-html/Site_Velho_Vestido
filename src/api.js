@@ -12,8 +12,6 @@ export function TOKEN_POST(body) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-
-        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(body),
     },
@@ -27,7 +25,6 @@ export function USER_GET(token) {
       method: 'GET',
       headers: {
         Authorization: bearer + token,
-        'Access-Control-Allow-Origin': '*',
       },
     },
   };
@@ -40,7 +37,6 @@ export function TOKEN_VALIDADE_POST(token) {
       method: 'POST',
       headers: {
         Authorization: bearer + token,
-        'Access-Control-Allow-Origin': '*',
       },
     },
   };
@@ -66,7 +62,6 @@ export function PRODUCT_POST(formData, token) {
       method: 'POST',
       headers: {
         Authorization: bearer + token,
-        'Access-Control-Allow-Origin': '*',
       },
       body: formData,
     },
@@ -99,7 +94,6 @@ export function PRODUCT_DELETE(id) {
       method: 'DELETE',
       headers: {
         Authorization: bearer + window.localStorage.getItem('token'),
-        'Access-Control-Allow-Origin': '*',
       },
     },
   };
