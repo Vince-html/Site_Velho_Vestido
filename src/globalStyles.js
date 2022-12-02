@@ -16,8 +16,15 @@ const GlobalStyle = createGlobalStyle`
    &::after, &::before {
     box-sizing: border-box;
   }
-}
 
+
+}
+.mainContainer {
+  margin: 0 auto;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+}
 
 
 

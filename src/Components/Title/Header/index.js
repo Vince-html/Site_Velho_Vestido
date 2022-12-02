@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-
+import { searchPhoto } from '../../../store/product';
 import { Link } from 'react-router-dom';
 import Logo from '../logo';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Section,
   StyledMenu,
@@ -57,20 +58,43 @@ const Burger2 = ({ open, setOpen }) => {
 };
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+  const { searchParam } = useSelector((state) => state.product);
+  const [textValue, setTextValue] = useState(searchParam);
+  const dispatch = useDispatch();
 
-  const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
+  const handleSubmit = (e) => {
+    if (e.key === 'Enter' || e.type === 'click') {
+      dispatch(searchPhoto(textValue));
+    }
+  };
+
+  // const node = useRef();
+  // useOnClickOutside(node, () => setOpen(false));
 
   return (
     <>
-      <Burger2 open={open} setOpen={setOpen} />
-      <Menu open={open} setOpen={setOpen} />
+      {/* <Burger2 open={open} setOpen={setOpen} /> */}
+      {/* <Menu open={open} setOpen={setOpen} /> */}
       <Section>
-        <DivRef ref={node}>
-          <Burger open={open} setOpen={setOpen} />
+        <DivRef>
+          <input
+            type='text'
+            placeholder='Buscar'
+            onKeyPress={handleSubmit}
+            onChange={(e) => setTextValue(e.target.value)}
+            style={{
+              width: '100%',
+              height: '100%',
+              border: '1px solid #ccc',
+              borderRadius: '5px',
+              padding: '0 10px',
 
-          <Logo to='/'>Velho Vestido</Logo>
+              outline: 'none',
+            }}
+          />
+          {/* <Burger open={open} setOpen={setOpen} /> */}
+
+          <Logo to='/'>Unsplash</Logo>
         </DivRef>
       </Section>
     </>

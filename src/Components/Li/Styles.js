@@ -64,3 +64,48 @@ export const Img = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+
+export const Modal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+`;
+
+export const ModalContent = styled.div`
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  max-width: 800px;
+  height: 80%;
+  max-height: 800px;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 0 0 0 0.25rem;
+  }
+`;

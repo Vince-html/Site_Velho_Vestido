@@ -13,6 +13,7 @@ export const DivRef = styled.div`
 
   display: grid;
   z-index: 100;
+  align-items: center;
 
   justify-content: space-between;
 

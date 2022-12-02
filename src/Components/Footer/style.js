@@ -7,6 +7,16 @@ export const Container = styled.footer`
   font-size: 1.5rem;
 
   background-color: white;
-
   bottom: 0;
+
+  & h1 {
+    font-size: 2rem;
+  }
+  & p {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;

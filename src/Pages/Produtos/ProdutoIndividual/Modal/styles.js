@@ -71,7 +71,7 @@ export const Img = styled.img`
 
 export const ProductDescription = styled.div`
   display: grid;
-  grid-template-rows: 1fr 20rem 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   margin-inline-start: initial;
 
   @media (max-width: 50rem) {

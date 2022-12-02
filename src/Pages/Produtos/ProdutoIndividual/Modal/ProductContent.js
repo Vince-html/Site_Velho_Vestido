@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, Link, useHistory } from 'react-router-dom';
-import { PRODUCT_GET } from '../../../../api';
-import Error from '../../../../Components/Helper/Error';
-import useFetch from '../../../../Hooks/useFetch';
+import { saveAs } from 'file-saver';
 
 import {
   Container,
@@ -16,24 +15,22 @@ import {
 } from './styles';
 
 const ProductContent = ({ product }) => {
-  const { data, request, error } = useFetch();
   let { id } = useParams();
+  const { data } = useSelector((state) => state.product);
+
+  const filterProductId = data.filter((item) => item.id === id);
+
   const history = useHistory();
 
-  useEffect(() => {
-    async function getProduct() {
-      const { url, options } = await PRODUCT_GET(`${id}`);
-      request(url, options);
-    }
-
-    getProduct();
-  }, [request, id]);
   function handleBackPage() {
     history.goBack();
   }
 
-  if (error) return <Error error={error} />;
-  if (data) {
+  async function handleDownload(url) {
+    saveAs(url, 'download');
+  }
+
+  if (filterProductId) {
     return (
       <>
         <Main>
@@ -66,17 +63,23 @@ const ProductContent = ({ product }) => {
             </SubMenu>
           </TopSection>
           <Container>
-            <Img src={data.product.src} alt='' />
-            {/* <div>
-              
-            </div> */}
+            <Img src={filterProductId[0].urls.regular} alt='' />
+
             <ProductDescription>
               <div className='title-product'>
-                <h1>{data.product.title}</h1>
-                <p>cód. {data.product.codigo}</p>
+                <h1>{filterProductId[0].description}</h1>
+                {/* <p>cód. {data.product.codigo}</p> */}
               </div>
-              <Pdescription> {data.product.descricao}</Pdescription>
-              <Button>Tenho interesse</Button>
+              <Pdescription>
+                Fotógrafo: {filterProductId[0].user.bio}
+              </Pdescription>
+              <Button
+                onClick={(e) =>
+                  handleDownload(filterProductId[0].links.download)
+                }
+              >
+                Download
+              </Button>
             </ProductDescription>
           </Container>
         </Main>

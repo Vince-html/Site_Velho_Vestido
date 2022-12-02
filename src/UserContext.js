@@ -1,7 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
-/* eslint-disable no-empty */
-/* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { TOKEN_POST, TOKEN_VALIDADE_POST, USER_GET } from './api';
